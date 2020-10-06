@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Category, SubCategory, Page } from '../entity/blog.entity';
 
 export class CreateCategoryDto {
   @ApiProperty()
@@ -6,20 +7,9 @@ export class CreateCategoryDto {
 
   @ApiProperty()
   readonly hide_flag: number;
-}
-
-export class CreatePageDto {
+  
   @ApiProperty()
-  readonly page_url: string;
-
-  @ApiProperty()
-  readonly page_body: string;
-
-  @ApiProperty()
-  readonly sc_id: number;
-
-  @ApiProperty()
-  readonly hide_flag: number;
+  readonly subcategories: SubCategory[];
 }
 
 export class CreateSubCategoryDto {
@@ -27,10 +17,24 @@ export class CreateSubCategoryDto {
   readonly sc_subject: string;
 
   @ApiProperty()
-  readonly p_id: number;
+  readonly hide_flag: number;
+
+  @ApiProperty()
+  readonly c_id: Category;
+
+  @ApiProperty()
+  readonly pages: Page[];
+}
+
+export class CreatePageDto {
+  @ApiProperty()
+  readonly page_body: string;
 
   @ApiProperty()
   readonly hide_flag: number;
+
+  @ApiProperty()
+  readonly sc_id: SubCategory;
 }
 
 export class CreateUserDto {

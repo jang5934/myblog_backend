@@ -1,7 +1,10 @@
 import {
     Entity,
     PrimaryGeneratedColumn,
-    Column
+    Column,
+    OneToMany,
+    ManyToOne,
+    JoinColumn
   } from 'typeorm';
   
   @Entity()
@@ -14,39 +17,44 @@ import {
   
     @Column()
     hide_flag: number;
+
+    @OneToMany(type => SubCategory, subcategory => subcategory.c_id)
+    subcategories: SubCategory[];
   }
 
   @Entity()
-  export class SubCategory {
+  export class SubCategory {  
     @PrimaryGeneratedColumn()
     sc_id: number;
-  
+
     @Column()
     sc_subject: string;
   
     @Column()
-    p_id: number;
-
-    @Column()
     hide_flag: number;
+    
+    @ManyToOne(type => Category, category => category.subcategories)
+    @JoinColumn()
+    c_id: Category;
+
+    @OneToMany(type => Page, page => page.sc_id)
+    pages: Page[];
   }
 
   @Entity()
   export class Page {
     @PrimaryGeneratedColumn()
     p_id: number;
-  
-    @Column()
-    page_url: string;
 
     @Column()
     page_body: string;
   
     @Column()
-    sc_id: number;
-
-    @Column()
     hide_flag: number;
+
+    @ManyToOne(type => SubCategory, sub_category => sub_category.pages)
+    @JoinColumn()
+    sc_id: SubCategory;
   }
 
   @Entity()

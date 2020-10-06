@@ -16,7 +16,7 @@ import { Category, SubCategory, Page, User } from './blog/entity/blog.entity';
     entities: [Category, SubCategory, Page, User],
     synchronize: true,
   }),
-  BlogModule,],
+  BlogModule],
   controllers: [AppController],
   providers: [AppService],
 })
