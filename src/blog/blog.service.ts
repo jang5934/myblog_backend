@@ -10,7 +10,11 @@ export class BlogService {
         @InjectRepository(Category)
         private readonly categoryRepository : Repository<Category>,
         @InjectRepository(SubCategory)
-        private readonly subCategoryRepository : Repository<SubCategory>
+        private readonly subCategoryRepository : Repository<SubCategory>,
+        @InjectRepository(Page)
+        private readonly pageRepository : Repository<Page>,
+        @InjectRepository(User)
+        private readonly userRepository : Repository<User>,
     ){}
 
     public async getCategoryInfo(): Promise<Category[]> {
@@ -23,14 +27,44 @@ export class BlogService {
         return data;
     }
 
-    public async getPageInfo(id: number): Promise<SubCategory[] | null> {
+    public async getPageInfo(id: number): Promise<SubCategory| null> {
 
         const data = await this.subCategoryRepository
         .createQueryBuilder("subcategory")
         .leftJoinAndSelect("subcategory.pages", "page")
         .where("subcategory.sc_id = :sc_id", {sc_id: id})
-        .getMany();
+        .getOne();
 
         return data;
     }
+
+    public async checkUser(input: CreateUserDto) : Promise<number | null> {
+        return await this.userRepository
+        .createQueryBuilder("user")
+        .where("user.name = :name", {name: input.name})
+        .andWhere("user.password = :password", {password: input.password})
+        .getCount();
+    }
+
+    public async createUser(input: CreateUserDto) : Promise<User | null> {
+        return await this.userRepository.save(input);
+    }
+
+    public async createCategory(category: CreateCategoryDto): Promise<Category> {
+        return await this.categoryRepository.save(category);
+    }
+
+    public async createSubCategory(subcategory: CreateSubCategoryDto): Promise<SubCategory> {
+        return await this.subCategoryRepository.save(subcategory);
+    }
+
+    public async createPage(page: CreatePageDto): Promise<Page> {
+        return await this.pageRepository.save(page);
+    }
+
+    public async createUser(user: CreateUserDto): Promise<User> {
+        return await this.userRepository.save(user);
+    }
+
+
 }
