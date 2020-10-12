@@ -46,10 +46,6 @@ export class BlogService {
         .getCount();
     }
 
-    public async createUser(input: CreateUserDto) : Promise<User | null> {
-        return await this.userRepository.save(input);
-    }
-
     public async createCategory(category: CreateCategoryDto): Promise<Category> {
         return await this.categoryRepository.save(category);
     }

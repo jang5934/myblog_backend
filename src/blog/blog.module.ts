@@ -7,6 +7,7 @@ import { Category, SubCategory, Page, User } from './entity/blog.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Category, SubCategory, Page, User])],
   controllers: [BlogController],
-  providers: [BlogService]
+  providers: [BlogService],
+  exports: [BlogService]
 })
 export class BlogModule {}

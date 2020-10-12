@@ -59,4 +59,6 @@ export class BlogController {
     async addOneUser(@Body() post: CreateUserDto) : Promise<User>{
         return this.blogService.createUser(post);
     }
+
+    
 }
