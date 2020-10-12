@@ -39,11 +39,13 @@ export class BlogService {
     }
 
     public async checkUser(input: CreateUserDto) : Promise<number | null> {
-        return await this.userRepository
+        const result = await this.userRepository
         .createQueryBuilder("user")
-        .where("user.name = :name", {name: input.name})
+        .where("user.name = :name", {name: input.username})
         .andWhere("user.password = :password", {password: input.password})
         .getCount();
+
+        return result;
     }
 
     public async createCategory(category: CreateCategoryDto): Promise<Category> {

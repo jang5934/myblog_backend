@@ -10,11 +10,14 @@ export class AuthService {
     private jwtService: JwtService
     ) {}
 
-  async validateUser(input: CreateUserDto): Promise<any> {
-    if(await this.blogService.checkUser(input))
+  async validateUser(username: string, password: string): Promise<CreateUserDto> {
+    const input = {username : username, password :  password};
+    const result = await this.blogService.checkUser(input);
+    
+    if(result) {
       return input;
-    else
-      return null;
+    }
+    return null;
   }
   
   async login(user: any) {

@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsString } from 'class-validator';
 import { Category, SubCategory, Page } from '../entity/blog.entity';
 
 export class CreateCategoryDto {
@@ -39,8 +40,10 @@ export class CreatePageDto {
 
 export class CreateUserDto {
   @ApiProperty()
-  readonly name: string;
+  @IsString() // This decorator has been added since the typical warning message appears in command prompt.
+  readonly username: string;
 
   @ApiProperty()
+  @IsString() // This decorator has been added since the typical warning message appears in command prompt.
   readonly password: string;
 }

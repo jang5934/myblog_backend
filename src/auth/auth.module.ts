@@ -11,9 +11,10 @@ import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
 
 @Module({
-  imports: [BlogModule,
-    PassportModule,
+  imports: [
+    BlogModule,
     TypeOrmModule.forFeature([Category, SubCategory, Page, User]),
+    PassportModule,
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '60s' },

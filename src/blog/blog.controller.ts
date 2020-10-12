@@ -22,8 +22,11 @@ export class BlogController {
 
     // check whether the inserted user is exist in DB or not.
     @Post('login')
-    async checkUser(@Body() post: CreateUserDto): Promise<number> {
-        return this.blogService.checkUser(post);
+    async checkUser(@Body() post: CreateUserDto): Promise<CreateUserDto> {
+        const result = await this.blogService.checkUser(post);
+        if(result == 1)
+            return post;
+        return null;
     }
 
     // create user according to received data(body data)
