@@ -12,7 +12,7 @@
   
   ## Notice
 
-  [2020-10-16] This project is being developed. Any modifications are not commited yet.
+  [2020-10-13] Auth module and RestAPI to serve blog information is almost developed.
 
   ## The role(or funtionality) of this
 
