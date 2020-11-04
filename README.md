@@ -10,3 +10,15 @@
   
   ## For more information about NestJS, visit https://github.com/nestjs/nest repository.
   
+  ## Notice
+
+  [2020-10-16] This project is being developed. Any modifications are not commited yet.
+
+  ## The role(or funtionality) of this
+
+  This server will serve blog information that stored in MySQL through RestAPI.
+  So, it will developed to work for 'myblog_frontend'.
+
+  github link for 'myblog_backend' : https://github.com/jang5934/myblog_frontend
+
+  
