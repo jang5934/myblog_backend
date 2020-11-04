@@ -16,8 +16,8 @@
 
   ## The role(or funtionality) of this
 
-  This server will serve blog information that stored in MySQL through RestAPI.
-  So, it will developed to work for 'myblog_frontend'.
+  This server will serve blog information that stored in MySQL through RestAPI.<br>
+  It will works with 'myblog_frontend'.
 
   github link for 'myblog_frontend' : https://github.com/jang5934/myblog_frontend
 
