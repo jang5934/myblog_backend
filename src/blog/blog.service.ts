@@ -27,11 +27,12 @@ export class BlogService {
         return data;
     }
 
-    public async getPageInfo(id: number): Promise<SubCategory| null> {
+    public async getLatestPageInfo(id: number): Promise<SubCategory| null> {
 
         const data = await this.subCategoryRepository
         .createQueryBuilder("subcategory")
         .leftJoinAndSelect("subcategory.pages", "page")
+        .addSelect("ROW_NUMBER () OVER () as 'offset'")
         .where("subcategory.sc_id = :sc_id", {sc_id: id})
         .getOne();
 
@@ -60,6 +61,7 @@ export class BlogService {
         return await this.pageRepository.save(page);
     }
 
+    // This method is for test and should be disabled for security issue.
     public async createUser(user: CreateUserDto): Promise<User> {
         return await this.userRepository.save(user);
     }

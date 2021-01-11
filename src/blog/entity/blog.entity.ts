@@ -47,6 +47,12 @@ import {
     p_id: number;
 
     @Column()
+    create_date: Date;
+
+    @Column()
+    page_subject: string;
+
+    @Column()
     page_body: string;
   
     @Column()

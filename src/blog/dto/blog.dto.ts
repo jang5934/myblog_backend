@@ -29,6 +29,12 @@ export class CreateSubCategoryDto {
 
 export class CreatePageDto {
   @ApiProperty()
+  readonly create_date: Date;
+
+  @ApiProperty()
+  readonly page_subject: string;
+
+  @ApiProperty()
   readonly page_body: string;
 
   @ApiProperty()

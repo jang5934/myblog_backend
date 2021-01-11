@@ -14,10 +14,10 @@ export class BlogController {
         return this.blogService.getCategoryInfo();
     }
 
-    // get page informations of selected subcategory at index : id
-    @Get('pagesOfsubCat:id')
+    // get latest page informations of selected subcategory at index : id
+    @Get('latestPageOfsubCat:id')
     getOneColumn(@Param('id') id): Promise<SubCategory> {
-        return this.blogService.getPageInfo(id);
+        return this.blogService.getLatestPageInfo(id);
     }
 
     // check whether the inserted user is exist in DB or not.
