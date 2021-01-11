@@ -10,3 +10,17 @@
   
   ## For more information about NestJS, visit https://github.com/nestjs/nest repository.
   
+  ## Notice
+
+  [2020-10-13] Auth module and RestAPI to serve blog information is almost developed.
+  
+  [2021-01-12] Longtime update. But the functionality that sends the post data is being under developed.
+
+  ## The role(or funtionality) of this
+
+  This server will serve blog information that stored in MySQL through RestAPI.<br>
+  It will works with 'myblog_frontend'.
+
+  github link for 'myblog_frontend' : https://github.com/jang5934/myblog_frontend
+
+  
