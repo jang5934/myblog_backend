@@ -13,7 +13,8 @@
   ## Notice
 
   [2020-10-13] Auth module and RestAPI to serve blog information is almost developed.
-  [2021-01-11] Being 
+  
+  [2021-01-12] Longtime update. But the functionality that sends the post data is being under developed.
 
   ## The role(or funtionality) of this
 
