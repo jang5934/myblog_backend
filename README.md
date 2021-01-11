@@ -13,6 +13,7 @@
   ## Notice
 
   [2020-10-13] Auth module and RestAPI to serve blog information is almost developed.
+  [2021-01-11] Being 
 
   ## The role(or funtionality) of this
 
