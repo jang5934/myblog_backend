@@ -6,7 +6,7 @@ import { CreateCategoryDto, CreateSubCategoryDto, CreateUserDto, CreatePageDto }
 @Controller('blog')
 export class BlogController {
 
-    constructor(private readonly blogService : BlogService) {}
+    constructor(private readonly blogService: BlogService) { }
 
     // Get category informations in json format
     @Get('allCategories')
@@ -14,17 +14,23 @@ export class BlogController {
         return this.blogService.getCategoryInfo();
     }
 
-    // get latest page informations of selected subcategory at index : id
-    @Get('latestPageOfsubCat:id')
-    getOneColumn(@Param('id') id): Promise<SubCategory> {
-        return this.blogService.getLatestPageInfo(id);
+    // get informations of selected subcategory at index : id
+    @Get('subCatInfo:id')
+    getSubcategoryInfo(@Param('id') id): Promise<SubCategory> {
+        return this.blogService.getSubcategoryInfo(id);
+    }
+
+    // get data of selected post at index : id
+    @Get('postData:id')
+    getPostData(@Param('id') id): Promise<Page> {
+        return this.blogService.getPageInfoWithId(id);
     }
 
     // check whether the inserted user is exist in DB or not.
     @Post('login')
     async checkUser(@Body() post: CreateUserDto): Promise<CreateUserDto> {
         const result = await this.blogService.checkUser(post);
-        if(result == 1)
+        if (result == 1)
             return post;
         return null;
     }
@@ -37,21 +43,21 @@ export class BlogController {
 
     // create new category
     @Post('addCategory')
-    async addOneCategory(@Body() post: CreateCategoryDto) : Promise<Category>{
+    async addOneCategory(@Body() post: CreateCategoryDto): Promise<Category> {
         return this.blogService.createCategory(post);
     }
 
     // create new subcategory
     // parent category index(= category index) should be contained in body data.
     @Post('addSubCategory')
-    async addOneSubCategory(@Body() post: CreateSubCategoryDto) : Promise<SubCategory>{
+    async addOneSubCategory(@Body() post: CreateSubCategoryDto): Promise<SubCategory> {
         return this.blogService.createSubCategory(post);
     }
 
     // create new page
     // parent category index(= sub category index) should be contained in body data.
     @Post('addPage')
-    async addOnePage(@Body() post: CreatePageDto) : Promise<Page>{
+    async addOnePage(@Body() post: CreatePageDto): Promise<Page> {
         return this.blogService.createPage(post);
     }
 
@@ -59,9 +65,9 @@ export class BlogController {
     // Adding new user. Some auth process like e-mail validation isn't developed yet.
     // if you need it, maybe you should build or setup e-mailing server. 
     @Post('addUser')
-    async addOneUser(@Body() post: CreateUserDto) : Promise<User>{
+    async addOneUser(@Body() post: CreateUserDto): Promise<User> {
         return this.blogService.createUser(post);
     }
 
-    
+
 }
