@@ -10,7 +10,7 @@
   
   ## For more information about NestJS, visit https://github.com/nestjs/nest repository.
   
-  ## Notice
+  ## History
 
   [2020-10-13] Auth module and RestAPI to serve blog information is almost developed.
   
